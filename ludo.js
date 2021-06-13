@@ -7,7 +7,6 @@ let shouldMovePawn = false;
 let canRoll = true;
 let safePlaces = [5, 6, 39, 52, 65, 66, 32, 19]; //stops and starts ya safeplaces
 const steps = document.getElementsByClassName("astep"); //all steps of ludo
-
 // for (let i = 0; i < 72; i++) {
 //   steps[i].textContent = i;
 // }
@@ -49,7 +48,6 @@ const currPosition = {
   green: [-1, -1, -1, -1],
 };
 
-
 // dice rolling aur turn checking
 function rollDice() {
   if (canRoll) {
@@ -66,8 +64,8 @@ function rollDice() {
   }
 }
 
-function changeColor(color){
-  for(const faces of diceface){
+function changeDiceColor(color) {
+  for (const faces of diceface) {
     faces.style.backgroundColor = color;
   }
 }
@@ -86,8 +84,10 @@ function anyGotiBahirOrNot() {
 }
 
 function decideNextTurn() {
-  if (shouldMovePawn && randNum != 6) {
-    nextTurn();
+  if (shouldMovePawn) {
+    if (randNum != 6) {
+      nextTurn();
+    }
     canRoll = true;
     randNum = 0;
   } else if (randNum != 6 && !anyGotiBahirOrNot()) {
@@ -102,22 +102,22 @@ function nextTurn() {
   switch (turn) {
     case "green":
       // console.log(dice)
-      changeColor("yellow")
+      changeDiceColor("yellow");
       turn = "yellow";
       console.log("its yellow's turn");
       break;
     case "yellow":
-      changeColor("blue")
+      changeDiceColor("blue");
       turn = "blue";
       console.log("its blue's turn");
       break;
     case "blue":
-      changeColor("red");
+      changeDiceColor("red");
       turn = "red";
       console.log("its red's turn");
       break;
     case "red":
-      changeColor("green")
+      changeDiceColor("green");
       turn = "green";
       console.log("its green's turn");
       break;
@@ -125,6 +125,9 @@ function nextTurn() {
 }
 
 function movePawn(color, num) {
+  if (randNum == 0) {
+    return;
+  }
   goti = document.getElementById(color + num);
   let currentPosition = currPosition[color][num - 1];
   if (turn === color) {
@@ -132,7 +135,7 @@ function movePawn(color, num) {
       goti.style.display = "hidden";
       steps[paths[color][0]].appendChild(goti);
       currentPosition = 0;
-      safeSteps(color, currentPosition);
+      // safeSteps(color, currentPosition);
       currPosition[color][num - 1] = currentPosition;
       shouldMovePawn = true;
       canRoll = true;
@@ -146,36 +149,26 @@ function movePawn(color, num) {
       canRoll = true;
       onKill(currentPosition);
     }
-    
     decideNextTurn();
   }
-}
-
-function safeSteps(color, position) {
-  img = document.querySelector("img");
-  for (const safes in safePlaces) {
-    if (steps[safes] === steps[paths[color][position]]) {
-      // yahan pr styling krdae k ak k upper ak goti kaisae aai
-      // img.style.display = "hidden";
-      console.log("I am safe");
-      return true;
-    }
-  }
-  return false;
 }
 
 function onKill(pos) {
   if (safePlaces.includes(paths[turn][pos])) {
     return;
-    
-    // yahan bhi wohi safesteps ki styling aani ha
   }
 
   for (const color in currPosition) {
     for (let i = 0; i < 4; i++) {
-      // paths["red"][currPosition["red"][0]] == paths["blue"][currPosition["blue"][0]]
-      if (color != turn && paths[color][currPosition[color][i]] === paths[turn][pos]) {
-        console.log("kill");
+      if (
+        color != turn &&
+        paths[color][currPosition[color][i]] === paths[turn][pos]
+      ) {
+        let victim = document.getElementsByClassName(color + "" + i);
+        victim.style.display = "hidden";
+        let victimHome = document.getElementById(color+"Home"+i)
+        victimHome.appendChild(victim);
+        currPosition[color][i] = -1
         break;
       }
     }
