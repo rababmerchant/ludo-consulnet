@@ -1,0 +1,36 @@
+html, body{
+	width:100%;
+    height: 100%;
+    overflow: hidden;
+	margin: 0px;
+    background-image: url("./images/page.png");
+    background-size:cover;
+    background-repeat: no-repeat;
+
+}
+.players{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-end;
+    height: inherit;
+}
+.players img:nth-child(1){
+    position: relative;
+    right: 400px;
+    bottom: 280px;
+}
+.players img:nth-child(2){
+    position:relative;
+    right: 400px;
+    bottom: 250px;
+}
+.players img:hover{
+    width:268px;
+    height:154px ;
+    cursor: pointer;
+}
+.back:hover{
+    cursor: pointer;
+}
+

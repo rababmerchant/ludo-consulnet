@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ludo game</title>
+    <link href="./ludo.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- dice -->
+
+    <div class="scene">
+      <div class="cube">
+        <div class="cube-face cube-face1">1</div>
+        <div class="cube-face cube-face2">2</div>
+        <div class="cube-face cube-face3">3</div>
+        <div class="cube-face cube-face4">4</div>
+        <div class="cube-face cube-face5">5</div>
+        <div class="cube-face cube-face6">6</div>
+      </div>
+    </div>
+
+    <!-- ludo -->
+
+    <div class="ludo">
+      <!-- green -->
+      <div class="light-green light-box">
+        <div class="dark-green dark-box">
+          <div class="shapes">
+            <div class="circle">
+              <div class="green-goti" id="green1" onclick="movePawn('green', 1)"></div>
+            </div>
+            <div class="circle">
+              <div class="green-goti" id="green2" onclick="movePawn('green', 2)"></div>
+            </div>
+            <div class="circle">
+              <div class="green-goti" id="green3" onclick="movePawn('green', 3)"></div>
+            </div>
+            <div class="circle">
+              <div class="green-goti" id="green4" onclick="movePawn('green', 4)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- yellow grid -->
+
+      <div class="side rectangle">
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-yellow box astep"></div>
+        <div class="light-yellow box astep">
+          <img
+            src="./images/start.png"
+            alt="start"
+            width="70px"
+            height="70px"
+          />
+        </div>
+        <div class="light-yellow box astep">
+          <img src="./images/stop.png" alt="stop" width="70px" height="70px" />
+        </div>
+        <div class="light-yellow box astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-yellow box astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-yellow box astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-yellow box astep"></div>
+        <div class="white astep"></div>
+      </div>
+
+      <!-- yellow-->
+
+      <div class="light-yellow light-box">
+        <div class="dark-yellow dark-box">
+          <div class="shapes">
+            <div class="circle">
+              <div class="yellow-goti" id="yellow1" onclick="movePawn('yellow', 1)"></div>
+            </div>
+            <div class="circle">
+              <div class="yellow-goti" id="yellow2" onclick="movePawn('yellow', 2)"></div>
+            </div>
+            <div class="circle">
+              <div class="yellow-goti" id="yellow3" onclick="movePawn('yellow', 3)"></div>
+            </div>
+            <div class="circle">
+              <div class="yellow-goti" id="yellow4" onclick="movePawn('yellow', 4)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- green grid -->
+
+      <div class="middle rectangle">
+        <div class="white astep"></div>
+        <div class="light-green box astep">
+          <img
+            src="./images/start.png"
+            alt="start"
+            width="70px"
+            height="70px"
+          />
+        </div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-green box astep"></div>
+        <div class="light-green box astep"></div>
+        <div class="light-green box astep"></div>
+        <div class="light-green box astep"></div>
+        <div class="light-green box astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-green box astep">
+          <img src="./images/stop.png" alt="stop" width="70px" height="70px" />
+        </div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+      </div>
+
+      <!-- center-box -->
+
+      <div class="triangles">
+        <div class="green-triangle">
+          <p>1</p>
+        </div>
+        <div class="yellow-triangle">
+          <p>2</p>
+        </div>
+        <div class="blue-triangle">
+          <p>3</p>
+        </div>
+        <div class="red-triangle">
+          <p>4</p>
+        </div>
+      </div>
+
+      <!-- blue-grid -->
+
+      <div class="middle rectangle">
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-blue box astep">
+          <img src="./images/stop.png" alt="stop" width="70px" height="70px" />
+        </div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-blue box astep"></div>
+        <div class="light-blue box astep"></div>
+        <div class="light-blue box astep"></div>
+        <div class="light-blue box astep"></div>
+        <div class="light-blue box astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-blue box astep">
+          <img
+            src="./images/start.png"
+            alt="start"
+            width="70px"
+            height="70px"
+          />
+        </div>
+        <div class="white astep"></div>
+      </div>
+
+      <!-- red -->
+
+      <div class="light-red light-box">
+        <div class="dark-red dark-box">
+          <div class="shapes">
+            <div class="circle">
+              <div class="red-goti" id="red1" onclick="movePawn('red', 1)"></div>
+            </div>
+            <div class="circle">
+              <div class="red-goti" id="red2" onclick="movePawn('red', 2)"></div>
+            </div>
+            <div class="circle">
+              <div class="red-goti" id="red3" onclick="movePawn('red', 3)"></div>
+            </div>
+            <div class="circle">
+              <div class="red-goti" id="red4" onclick="movePawn('red', 4)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- red grid -->
+
+      <div class="side rectangle">
+        <div class="white astep"></div>
+        <div class="light-red box astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-red box astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-red box astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="light-red box astep"></div>
+        <div class="light-red box astep">
+          <img src="./images/stop.png" alt="stop" width="70px" height="70px" />
+        </div>
+        <div class="light-red box astep">
+          <img
+            src="./images/start.png"
+            alt="start"
+            width="70px"
+            height="70px"
+          />
+        </div>
+        <div class="light-red box astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+        <div class="white astep"></div>
+      </div>
+
+      <!-- blue -->
+
+      <div class="light-blue light-box">
+        <div class="dark-blue dark-box">
+          <div class="shapes">
+            <div class="circle">
+              <div class="blue-goti" id="blue1" onclick="movePawn('blue', 1)"></div>
+            </div>
+            <div class="circle">
+              <div class="blue-goti" id="blue2" onclick="movePawn('blue', 2)"></div>
+            </div>
+            <div class="circle">
+              <div class="blue-goti" id="blue3" onclick="movePawn('blue', 3)"></div>
+            </div>
+            <div class="circle">
+              <div class="blue-goti" id="blue4" onclick="movePawn('blue', 4)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./ludo.js"></script>
+  </body>
+</html>
