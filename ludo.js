@@ -6,8 +6,11 @@ let randNum;
 let shouldMovePawn = false;
 let canRoll = true;
 let safePlaces = [5, 6, 39, 52, 65, 66, 32, 19]; //stops and starts ya safeplaces
-let a = 0;
 const steps = document.getElementsByClassName("astep"); //all steps of ludo
+
+// for (let i = 0; i < 72; i++) {
+//   steps[i].textContent = i;
+// }
 
 const paths = {
   //yellow ka path
@@ -46,121 +49,139 @@ const currPosition = {
   green: [-1, -1, -1, -1],
 };
 
+
 // dice rolling aur turn checking
 function rollDice() {
-  // randNum = Math.ceil(Math.random() * 6);
   if (canRoll) {
-    randNum = a % 2 == 0 ? 6 : 5;
+    randNum = Math.ceil(Math.random() * 6);
+    // randNum = 1;
     let showClass = "show-" + randNum;
     if (currentClass) {
       dice.classList.remove(currentClass);
     }
     dice.classList.add(showClass);
     currentClass = showClass;
-    a++;
-    if(randNum != 6){
-      canRoll = true;
-    }
     canRoll = false;
+    decideNextTurn();
+  }
+}
+
+function changeColor(color){
+  for(const faces of diceface){
+    faces.style.backgroundColor = color;
   }
 }
 
 dice.addEventListener("click", rollDice);
 
+function anyGotiBahirOrNot() {
+  let flag = false;
+  for (let i = 0; i < 4; i++) {
+    if (currPosition[turn][i] != -1) {
+      flag = true;
+      break;
+    }
+  }
+  return flag;
+}
+
 function decideNextTurn() {
   if (shouldMovePawn && randNum != 6) {
-    nextTurn(turn);
+    setTimeout(
+      function(){}, 2000
+    )
+    nextTurn();
+    canRoll = true;
+    randNum = 0;
+  } else if (randNum != 6 && !anyGotiBahirOrNot()) {
+    nextTurn();
+    canRoll = true;
+    randNum = 0;
   }
   shouldMovePawn = false;
-  randNum = 0;
 }
 
 function nextTurn() {
-    switch (turn) {
-      case "green":
-        // diceface.style.backgroundColor = "yellow";
-        turn = "yellow";
-        console.log("its yellow's turn");
-        break;
-      case "yellow":
-        // diceface.style.backgroundColor = "blue";
-        turn = "blue";
-        console.log("its blue's turn");
-        break;
-      case "blue":
-        // diceface.style.backgroundColor = "red";
-        turn = "red";
-        console.log("its red's turn");
-        break;
-      case "red":
-        // diceface.style.backgroundColor = "green";
-        turn = "green";
-        console.log("its green's turn");
-        break;
-    }
+  switch (turn) {
+    case "green":
+      // console.log(dice)
+      changeColor("yellow")
+      turn = "yellow";
+      console.log("its yellow's turn");
+      break;
+    case "yellow":
+      changeColor("blue")
+      turn = "blue";
+      console.log("its blue's turn");
+      break;
+    case "blue":
+      changeColor("red");
+      turn = "red";
+      console.log("its red's turn");
+      break;
+    case "red":
+      changeColor("green")
+      turn = "green";
+      console.log("its green's turn");
+      break;
+  }
 }
 
 function movePawn(color, num) {
-  let goti = document.getElementById(color + num);
+  goti = document.getElementById(color + num);
   let currentPosition = currPosition[color][num - 1];
-  console.log("Button Pressed");
-  console.log(randNum);
   if (turn === color) {
     if (randNum == 6 && currentPosition === -1) {
       goti.style.display = "hidden";
       steps[paths[color][0]].appendChild(goti);
       currentPosition = 0;
-      // safeSteps(currPosition);
+      safeSteps(color, currentPosition);
       currPosition[color][num - 1] = currentPosition;
       shouldMovePawn = true;
       canRoll = true;
-
     } else if (currentPosition != -1 && currentPosition < 52) {
       currentPosition += randNum;
       goti.style.display = "hidden";
-      onKill(goti, currentPosition);
       steps[paths[color][currentPosition]].appendChild(goti);
       currPosition[color][num - 1] = currentPosition;
       shouldMovePawn = true;
       pawnMove = true;
       canRoll = true;
+      onKill(currentPosition);
     }
+    
     decideNextTurn();
   }
-  
 }
 
-
-
-function safeSteps(position) {
+function safeSteps(color, position) {
   img = document.querySelector("img");
   for (const safes in safePlaces) {
-    if (steps[safes] === position) {
-      img.style.display = "none";
+    if (steps[safes] === steps[paths[color][position]]) {
+      // yahan pr styling krdae k ak k upper ak goti kaisae aai
+      // img.style.display = "hidden";
+      console.log("I am safe");
       return true;
     }
-    return false;
   }
+  return false;
 }
 
-// logic yeh ha k jo goti chl rahi hogi wo jahan rukae
-// uske parent ko pkroo
-// check kroo k kya parent k andr koi aur goti ha agr han
-// to uska color check kroo aur agr same nahi ha aanae wali goti k color se
-// aur safeplaces pr bhi nahi ha tw
-// to remove krdou
+function onKill(pos) {
+  if (safePlaces.includes(paths[turn][pos])) {
+    return;
+    
+    // yahan bhi wohi safesteps ki styling aani ha
+  }
 
-function onKill(goti, position) {
-  let step = goti.parentNode;
-  let victim;
-  if (step.hasChildNodes()) {
-    victim = step.firstChild;
-    if (victim.color != goti.color && !safeSteps(position)) {
-      step = step.removeChild(victim);
-      // .appendChild(victim)
-      // position = -1
+  for (const color in currPosition) {
+    for (let i = 0; i < 4; i++) {
+      // paths["red"][currPosition["red"][0]] == paths["blue"][currPosition["blue"][0]]
+      if (color != turn && paths[color][currPosition[color][i]] === paths[turn][pos]) {
+        console.log("kill");
+        break;
+      }
     }
-  } else {
   }
 }
 

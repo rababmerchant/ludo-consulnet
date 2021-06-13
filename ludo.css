@@ -205,7 +205,7 @@ p{
 	transform-style: preserve-3d;
 	transform: translateZ(-100px);
 	transition: transform 1s;
-	cursor: pointer;
+	cursor: pointer;  
   }
   .cube.show-1  { transform: translateZ(-100px) rotateY( 0deg); }
   .cube.show-2  { transform: translateZ(-100px) rotateY(-180deg); }
@@ -223,8 +223,8 @@ p{
 	font-size: 70px;
 	font-weight: bolder;
 	color: white;
+	background-color: green;
 	text-align: center;
-	background-color: black;  
 	opacity: 0.75
   }
   .cube-face1  { transform: rotateY(  0deg) translateZ(100px); }
