@@ -7,6 +7,7 @@ let shouldMovePawn = false;
 let canRoll = true;
 let safePlaces = [5, 6, 39, 52, 65, 66, 32, 19]; //stops and starts ya safeplaces
 const steps = document.getElementsByClassName("astep"); //all steps of ludo
+let kill=false;
 // for (let i = 0; i < 72; i++) {
 //   steps[i].textContent = i;
 // }
@@ -42,11 +43,16 @@ const paths = {
 };
 
 const currPosition = {
+  // red: [5, -1, -1, -1],
+  // blue: [17, -1, -1, -1],
   red: [-1, -1, -1, -1],
   blue: [-1, -1, -1, -1],
   yellow: [-1, -1, -1, -1],
   green: [-1, -1, -1, -1],
 };
+
+// steps[paths["red"][5]].appendChild(document.getElementById("red1"));
+// steps[paths["blue"][17]].appendChild(document.getElementById("blue1"));
 
 // dice rolling aur turn checking
 function rollDice() {
@@ -90,7 +96,7 @@ function decideNextTurn() {
     }
     canRoll = true;
     randNum = 0;
-  } else if (randNum != 6 && !anyGotiBahirOrNot()) {
+  } else if (randNum != 6 && !anyGotiBahirOrNot() && !kill) {
     nextTurn();
     canRoll = true;
     randNum = 0;
@@ -101,7 +107,6 @@ function decideNextTurn() {
 function nextTurn() {
   switch (turn) {
     case "green":
-      // console.log(dice)
       changeDiceColor("yellow");
       turn = "yellow";
       console.log("its yellow's turn");
@@ -157,19 +162,21 @@ function onKill(pos) {
   if (safePlaces.includes(paths[turn][pos])) {
     return;
   }
-
   for (const color in currPosition) {
     for (let i = 0; i < 4; i++) {
       if (
         color != turn &&
         paths[color][currPosition[color][i]] === paths[turn][pos]
       ) {
-        let victim = document.getElementsByClassName(color + "" + i);
+        let victim = document.getElementById(color + "" + (i + 1));
+        console.log(victim);
         victim.style.display = "hidden";
-        let victimHome = document.getElementById(color+"Home"+i)
+        let victimHome = document.getElementById(color + "Home" + (i + 1));
         victimHome.appendChild(victim);
-        currPosition[color][i] = -1
-        break;
+        currPosition[color][i] = -1;
+        kill = true;
+        shouldMovePawn = false;
+        return
       }
     }
   }
