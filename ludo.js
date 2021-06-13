@@ -87,9 +87,6 @@ function anyGotiBahirOrNot() {
 
 function decideNextTurn() {
   if (shouldMovePawn && randNum != 6) {
-    setTimeout(
-      function(){}, 2000
-    )
     nextTurn();
     canRoll = true;
     randNum = 0;
