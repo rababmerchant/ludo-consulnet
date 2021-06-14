@@ -7,7 +7,9 @@ let shouldMovePawn = false;
 let canRoll = true;
 let safePlaces = [5, 6, 39, 52, 65, 66, 32, 19]; //stops and starts ya safeplaces
 const steps = document.getElementsByClassName("astep"); //all steps of ludo
-let kill=false;
+let kill = false;
+let winGoti = false;
+let winner = [];
 // for (let i = 0; i < 72; i++) {
 //   steps[i].textContent = i;
 // }
@@ -54,6 +56,12 @@ const currPosition = {
 // steps[paths["red"][5]].appendChild(document.getElementById("red1"));
 // steps[paths["blue"][17]].appendChild(document.getElementById("blue1"));
 
+function changeDiceColor(color) {
+  for (const faces of diceface) {
+    faces.style.backgroundColor = color;
+  }
+}
+
 // dice rolling aur turn checking
 function rollDice() {
   if (canRoll) {
@@ -70,18 +78,12 @@ function rollDice() {
   }
 }
 
-function changeDiceColor(color) {
-  for (const faces of diceface) {
-    faces.style.backgroundColor = color;
-  }
-}
-
 dice.addEventListener("click", rollDice);
 
 function anyGotiBahirOrNot() {
   let flag = false;
   for (let i = 0; i < 4; i++) {
-    if (currPosition[turn][i] != -1) {
+    if (currPosition[turn][i] != -1 || currPosition[turn][i] != 56) {
       flag = true;
       break;
     }
@@ -96,8 +98,15 @@ function decideNextTurn() {
     }
     canRoll = true;
     randNum = 0;
-  } else if (randNum != 6 && !anyGotiBahirOrNot() && !kill) {
+  } else if (randNum != 6 && !anyGotiBahirOrNot()) {
     nextTurn();
+    canRoll = true;
+    randNum = 0;
+  } else if (winGoti) {
+    if (win[turn] === 4) {
+      // yahan pr winner declare krna ha
+    }
+    winGoti = false;
     canRoll = true;
     randNum = 0;
   }
@@ -140,19 +149,23 @@ function movePawn(color, num) {
       goti.style.display = "hidden";
       steps[paths[color][0]].appendChild(goti);
       currentPosition = 0;
-      // safeSteps(color, currentPosition);
       currPosition[color][num - 1] = currentPosition;
       shouldMovePawn = true;
       canRoll = true;
-    } else if (currentPosition != -1 && currentPosition < 52) {
+    } else if (currentPosition != -1 && currentPosition < 56) {
       currentPosition += randNum;
-      goti.style.display = "hidden";
-      steps[paths[color][currentPosition]].appendChild(goti);
+      if (currentPosition < 56) {
+        goti.style.display = "hidden";
+        steps[paths[color][currentPosition]].appendChild(goti);
+        shouldMovePawn = true;
+        pawnMove = true;
+        canRoll = true;
+        onKill(currentPosition);
+      } else if (currentPosition === 56) {
+        goti_win(currentPosition);
+        canRoll = true;
+      }
       currPosition[color][num - 1] = currentPosition;
-      shouldMovePawn = true;
-      pawnMove = true;
-      canRoll = true;
-      onKill(currentPosition);
     }
     decideNextTurn();
   }
@@ -176,19 +189,89 @@ function onKill(pos) {
         currPosition[color][i] = -1;
         kill = true;
         shouldMovePawn = false;
-        return
+        return;
       }
     }
   }
 }
 
-// goti-win ki logic yeh ha k agr currPosition = 52
+let win = {
+  red: 0,
+  blue: 0,
+  green: 0,
+  yellow: 0,
+};
+
+// steps[paths["red"][55]].appendChild(document.getElementById("red1"));
+// steps[paths["red"][55]].appendChild(document.getElementById("red2"));
+// steps[paths["red"][55]].appendChild(document.getElementById("red3"));
+// steps[paths["red"][55]].appendChild(document.getElementById("red4"));
+
+// steps[paths["blue"][55]].appendChild(document.getElementById("blue1"));
+// steps[paths["blue"][55]].appendChild(document.getElementById("blue2"));
+// steps[paths["blue"][55]].appendChild(document.getElementById("blue3"));
+// steps[paths["blue"][55]].appendChild(document.getElementById("blue4"));
+
+// steps[paths["green"][55]].appendChild(document.getElementById("green1"));
+// steps[paths["green"][55]].appendChild(document.getElementById("green2"));
+// steps[paths["green"][55]].appendChild(document.getElementById("green3"));
+// steps[paths["green"][55]].appendChild(document.getElementById("green4"));
+
+// goti-win ki logic yeh ha k agr currPosition = 55
 // tw wo goti win kr jai aur currPosition update ho jai 52 se
 // aur agr >52 k tw goti wahin pr rahae
-function goti_win() {}
+
+function goti_win(position) {
+  if (position == 56) {
+    goti.style.display = "hidden";
+    winPosition = document.getElementById(turn + "-triangle");
+    winPosition.appendChild(goti);
+    goti.style.position = "absolute";
+    decideWinPosition(turn);
+    position = 56;
+    win[turn] += 1;
+    console.log(win[turn]);
+    shouldMovePawn = false;
+    winGoti = true;
+    // checkWinner();
+  }
+}
+
+function decideWinPosition(color) {
+  switch (color) {
+    case "red":
+      goti.style.bottom = "-81px";
+      goti.style.right = "-29px";
+      break;
+
+    case "yellow":
+      goti.style.bottom = "29px";
+      goti.style.right = "-25px";
+      break;
+
+    case "green":
+      goti.style.bottom = "-24px";
+      goti.style.right = "30px";
+      break;
+
+    case "blue":
+      goti.style.bottom = "-28px";
+      goti.style.left = "39px";
+      break;
+  }
+}
 
 // winner ki logic yeh ha k agr kisi ki 4ron
 // gotiyaan win kr jai tw uske home pr 1st likha aa jai
 // aur baqi agr less than 2 players ho tw
 // game finish ho jai
-function winner() {}
+// function checkWinner() {
+//   for (const color in win) {
+//     if (win[color] === 4) {
+//       winner.push(color);
+//     }
+//   }
+//   if (winner.length === 3) {
+// yahan pr points chat lagana ha
+//   }
+// }

@@ -127,14 +127,15 @@ img {
   height: 214px;
   border: 1px solid black;
 }
-.green-triangle {
+#green-triangle {
   width: 0;
   height: 0;
   border-top: 107px solid transparent;
   border-left: 106px solid #78ab46;
   border-bottom: 107px solid transparent;
+  position: relative;
 }
-.yellow-triangle {
+#yellow-triangle {
   width: 0;
   height: 0;
   border-left: 106px solid transparent;
@@ -143,7 +144,7 @@ img {
   position: relative;
   bottom: 215px;
 }
-.blue-triangle {
+#blue-triangle {
   width: 0;
   height: 0;
   border-top: 109px solid transparent;
@@ -151,9 +152,9 @@ img {
   border-bottom: 109px solid transparent;
   position: relative;
   bottom: 324px;
-  left: 107px;
+  left: 105px;
 }
-.red-triangle {
+#red-triangle {
   width: 0;
   height: 0;
   border-left: 109px solid transparent;
@@ -167,22 +168,22 @@ p {
   font-size: 48px;
   font-weight: bolder;
 }
-.triangles .yellow-triangle p {
+.triangles #yellow-triangle p {
   position: absolute;
   bottom: -21px;
   right: -12.75px;
 }
-.triangles .green-triangle p {
+.triangles #green-triangle p {
   position: relative;
   right: 60px;
   bottom: 77px;
 }
-.triangles .blue-triangle p {
+.triangles #blue-triangle p {
   position: relative;
   bottom: 77px;
   left: 40px;
 }
-.triangles .red-triangle p {
+.triangles #red-triangle p {
   position: relative;
   top: 20px;
   right: 11px;
