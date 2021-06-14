@@ -3,7 +3,7 @@ html, body{
 	height:100%;
 	margin: 0px;
     overflow: hidden;
-    background-image: url("./images/ludo.jpeg");
+    background-image: url("./../images/ludo.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
 }

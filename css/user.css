@@ -3,7 +3,7 @@ html, body{
     height: 100%;
     overflow: hidden;
 	margin: 0px;
-    background-image: url("./images/page.png");
+    background-image: url("./../images/page.png");
     background-size:cover;
     background-repeat: no-repeat;
 

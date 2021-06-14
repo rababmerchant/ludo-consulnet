@@ -2,11 +2,15 @@
 <html>
   <head>
     <title>ludo game</title>
-    <link href="./ludo.css" rel="stylesheet" />
+    <link href="./css/ludo.css" rel="stylesheet" />
   </head>
 
   <body>
     <!-- dice -->
+
+      <audio controls id="diceSound" class="sound">
+        <source src="./sounds/dice.mp3" type="audio/mpeg">
+      </audio>
 
     <div class="scene">
       <div class="cube">
@@ -21,22 +25,51 @@
 
     <!-- ludo -->
 
+    <audio controls id="inoutSound" class="sound">
+      <source src="./sounds/inout.mp3" type="audio/mpeg">
+    </audio>
+    <audio controls id="killedSound" class="sound">
+      <source src="./sounds/killed.mp3" type="audio/mpeg">
+    </audio>
+    <audio controls id="diceSound" class="sound">
+      <source src="./sounds/step.mp3" type="audio/mpeg">
+    </audio>
+    <audio controls id="diceSound" class="sound">
+      <source src="./sounds/win.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="ludo">
       <!-- green -->
       <div class="light-green light-box">
         <div class="dark-green dark-box">
           <div class="shapes">
             <div class="circle" id="greenHome1">
-              <div class="green-goti" id="green1" onclick="movePawn('green', 1)"></div>
+              <div
+                class="green-goti"
+                id="green1"
+                onclick="movePawn('green', 1)"
+              ></div>
             </div>
             <div class="circle" id="greenHome2">
-              <div class="green-goti" id="green2" onclick="movePawn('green', 2)"></div>
+              <div
+                class="green-goti"
+                id="green2"
+                onclick="movePawn('green', 2)"
+              ></div>
             </div>
             <div class="circle" id="greenHome3">
-              <div class="green-goti" id="green3" onclick="movePawn('green', 3)"></div>
+              <div
+                class="green-goti"
+                id="green3"
+                onclick="movePawn('green', 3)"
+              ></div>
             </div>
             <div class="circle" id="greenHome4">
-              <div class="green-goti" id="green4" onclick="movePawn('green', 4)"></div>
+              <div
+                class="green-goti"
+                id="green4"
+                onclick="movePawn('green', 4)"
+              ></div>
             </div>
           </div>
         </div>
@@ -80,16 +113,32 @@
         <div class="dark-yellow dark-box">
           <div class="shapes">
             <div class="circle" id="yellowHome1">
-              <div class="yellow-goti" id="yellow1" onclick="movePawn('yellow', 1)"></div>
+              <div
+                class="yellow-goti"
+                id="yellow1"
+                onclick="movePawn('yellow', 1)"
+              ></div>
             </div>
             <div class="circle" id="yellowHome2">
-              <div class="yellow-goti" id="yellow2" onclick="movePawn('yellow', 2)"></div>
+              <div
+                class="yellow-goti"
+                id="yellow2"
+                onclick="movePawn('yellow', 2)"
+              ></div>
             </div>
             <div class="circle" id="yellowHome3">
-              <div class="yellow-goti" id="yellow3" onclick="movePawn('yellow', 3)"></div>
+              <div
+                class="yellow-goti"
+                id="yellow3"
+                onclick="movePawn('yellow', 3)"
+              ></div>
             </div>
             <div class="circle" id="yellowHome4">
-              <div class="yellow-goti" id="yellow4" onclick="movePawn('yellow', 4)"></div>
+              <div
+                class="yellow-goti"
+                id="yellow4"
+                onclick="movePawn('yellow', 4)"
+              ></div>
             </div>
           </div>
         </div>
@@ -182,16 +231,32 @@
         <div class="dark-red dark-box">
           <div class="shapes">
             <div class="circle" id="redHome1">
-              <div class="red-goti" id="red1" onclick="movePawn('red', 1)"></div>
+              <div
+                class="red-goti"
+                id="red1"
+                onclick="movePawn('red', 1)"
+              ></div>
             </div>
             <div class="circle" id="redHome2">
-              <div class="red-goti" id="red2" onclick="movePawn('red', 2)"></div>
+              <div
+                class="red-goti"
+                id="red2"
+                onclick="movePawn('red', 2)"
+              ></div>
             </div>
             <div class="circle" id="redHome3">
-              <div class="red-goti" id="red3" onclick="movePawn('red', 3)"></div>
+              <div
+                class="red-goti"
+                id="red3"
+                onclick="movePawn('red', 3)"
+              ></div>
             </div>
             <div class="circle" id="redHome4">
-              <div class="red-goti" id="red4" onclick="movePawn('red', 4)"></div>
+              <div
+                class="red-goti"
+                id="red4"
+                onclick="movePawn('red', 4)"
+              ></div>
             </div>
           </div>
         </div>
@@ -235,22 +300,38 @@
         <div class="dark-blue dark-box">
           <div class="shapes">
             <div class="circle" id="blueHome1">
-              <div class="blue-goti" id="blue1" onclick="movePawn('blue', 1)"></div>
+              <div
+                class="blue-goti"
+                id="blue1"
+                onclick="movePawn('blue', 1)"
+              ></div>
             </div>
             <div class="circle" id="blueHome2">
-              <div class="blue-goti" id="blue2" onclick="movePawn('blue', 2)"></div>
+              <div
+                class="blue-goti"
+                id="blue2"
+                onclick="movePawn('blue', 2)"
+              ></div>
             </div>
             <div class="circle" id="blueHome3">
-              <div class="blue-goti" id="blue3" onclick="movePawn('blue', 3)"></div>
+              <div
+                class="blue-goti"
+                id="blue3"
+                onclick="movePawn('blue', 3)"
+              ></div>
             </div>
             <div class="circle" id="blueHome4">
-              <div class="blue-goti" id="blue4" onclick="movePawn('blue', 4)"></div>
+              <div
+                class="blue-goti"
+                id="blue4"
+                onclick="movePawn('blue', 4)"
+              ></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <script src="./ludo.js"></script>
+    <script src="./js/ludo.js"></script>
   </body>
 </html>
