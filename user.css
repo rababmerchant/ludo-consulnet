@@ -6,16 +6,18 @@ html, body{
     background-image: url("./images/page.png");
     background-size:cover;
     background-repeat: no-repeat;
-
 }
 .players{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content:flex-end;
-    height: inherit;
+    justify-content: flex-end;
+    height: 80%;
 }
-.players img:nth-child(1){
+.players img{
+    margin-top: 50px;
+    margin-left: 300px;
+}
+/* .players img:nth-child(1){
     position: relative;
     right: 400px;
     bottom: 280px;
@@ -23,14 +25,10 @@ html, body{
 .players img:nth-child(2){
     position:relative;
     right: 400px;
-    bottom: 250px;
-}
-.players img:hover{
-    width:268px;
-    height:154px ;
+    bottom: 250px; */
+/* } */
+img:hover{
     cursor: pointer;
 }
-.back:hover{
-    cursor: pointer;
-}
+
 
