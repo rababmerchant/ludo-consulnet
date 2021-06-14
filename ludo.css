@@ -284,3 +284,9 @@ p {
 .cube-face6 {
   transform: rotateX(-90deg) translateZ(100px);
 }
+
+@media (min-width:351px) and (max-width:700px){
+  .ludo {
+    width: 1081px;
+  }
+}
