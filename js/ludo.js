@@ -110,13 +110,13 @@ function decideNextTurn() {
 }
 
 function nextTurn() {
-  const ludoDice = document.getElementsByClassName("scene");
+  const ludoDice = document.getElementById("scene");
   switch (turn) {
     case "green":
       setTimeout(function () {
         changeDiceColor("#e8c80f");
         turn = "yellow";
-        ludoDice.style.top="0px"
+        ludoDice.style.bottom="0px"
         ludoDice.style.left="0px"
       }, 2000);
       break;
@@ -125,14 +125,14 @@ function nextTurn() {
         turn = "blue";
         changeDiceColor("#3f3fe0");
         ludoDice.style.top="0px"
-        ludoDice.style.right="0px"
+        ludoDice.style.left="0px"
       }, 2000);
       break;
     case "blue":
       setTimeout(function () {
         changeDiceColor("#b73307");
         turn = "red";
-        ludoDice.style.bottom="0px"
+        ludoDice.style.top="0px"
         ludoDice.style.right="0px"
       }, 2000);
       break;
@@ -141,7 +141,7 @@ function nextTurn() {
         changeDiceColor("#549c0d");
         turn = "green";
         ludoDice.style.bottom="0px"
-        ludoDice.style.left="0px"
+        ludoDice.style.right="0px"
       }, 2000);
       break;
   }

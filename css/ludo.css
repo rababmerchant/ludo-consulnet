@@ -217,18 +217,18 @@ p {
   border: 2px solid #272779;
 }
 
-.scene {
+#scene {
   width: 200px;
   height: 200px;
   margin: 20px;
-  perspective: 600px;
   position: relative;
+  /* display: inline; */
 }
 
 .cube {
   width: 200px;
   height: 200px;
-  position: absolute;
+  position: relative;
   transform-style: preserve-3d;
   transform: translateZ(-100px);
   transition: transform 1s;
