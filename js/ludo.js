@@ -110,42 +110,39 @@ function decideNextTurn() {
 }
 
 function nextTurn() {
+  const ludoDice = document.getElementsByClassName("scene");
   switch (turn) {
     case "green":
       setTimeout(function () {
         changeDiceColor("#e8c80f");
         turn = "yellow";
-        dice.style.top="0px"
-        dice.style.left="0px"
-      }, 4000);
-      console.log("its yellow's turn");
+        ludoDice.style.top="0px"
+        ludoDice.style.left="0px"
+      }, 2000);
       break;
     case "yellow":
       setTimeout(function () {
         turn = "blue";
         changeDiceColor("#3f3fe0");
-        dice.style.top="0px"
-        dice.style.right="0px"
-      }, 4000);
-      console.log("its blue's turn");
+        ludoDice.style.top="0px"
+        ludoDice.style.right="0px"
+      }, 2000);
       break;
     case "blue":
       setTimeout(function () {
         changeDiceColor("#b73307");
         turn = "red";
-        dice.style.bottom="0px"
-        dice.style.right="0px"
-      }, 4000);
-      console.log("its red's turn");
+        ludoDice.style.bottom="0px"
+        ludoDice.style.right="0px"
+      }, 2000);
       break;
     case "red":
       setTimeout(function () {
         changeDiceColor("#549c0d");
         turn = "green";
-        dice.style.bottom="0px"
-        dice.style.left="0px"
-      }, 4000);
-      console.log("its green's turn");
+        ludoDice.style.bottom="0px"
+        ludoDice.style.left="0px"
+      }, 2000);
       break;
   }
 }
