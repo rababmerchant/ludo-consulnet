@@ -45,8 +45,8 @@ const paths = {
 };
 
 const currPosition = {
-  red: [5, -1, -1, -1],
-  blue: [17, -1, -1, -1],
+  red: [-1, -1, -1, -1],
+  blue: [-1, -1, -1, -1],
   yellow: [-1, -1, -1, -1],
   green: [-1, -1, -1, -1],
 };
@@ -61,7 +61,7 @@ function changeDiceColor(color) {
 function rollDice() {
   if (canRoll) {
     document.getElementById("diceSound").play();
-    randNum = Math.ceil(Math.random() * 6);
+    // randNum = Math.ceil(Math.random() * 6);
     randNum = 1;
     let showClass = "show-" + randNum;
     if (currentClass) {
@@ -115,6 +115,8 @@ function nextTurn() {
       setTimeout(function () {
         changeDiceColor("#e8c80f");
         turn = "yellow";
+        dice.style.top="0px"
+        dice.style.left="0px"
       }, 4000);
       console.log("its yellow's turn");
       break;
@@ -122,6 +124,8 @@ function nextTurn() {
       setTimeout(function () {
         turn = "blue";
         changeDiceColor("#3f3fe0");
+        dice.style.top="0px"
+        dice.style.right="0px"
       }, 4000);
       console.log("its blue's turn");
       break;
@@ -129,6 +133,8 @@ function nextTurn() {
       setTimeout(function () {
         changeDiceColor("#b73307");
         turn = "red";
+        dice.style.bottom="0px"
+        dice.style.right="0px"
       }, 4000);
       console.log("its red's turn");
       break;
@@ -136,6 +142,8 @@ function nextTurn() {
       setTimeout(function () {
         changeDiceColor("#549c0d");
         turn = "green";
+        dice.style.bottom="0px"
+        dice.style.left="0px"
       }, 4000);
       console.log("its green's turn");
       break;
@@ -264,16 +272,16 @@ function decideWinPosition(color) {
 // function checkWinner() {
 //   for (const color in win) {
 //     if (win[color] === 4) {
-//       winner.push(color);
+//       color
 //     }
-//   }
-//   if (winner.length === 3) {
-// yahan pr points chat lagana ha
+//     else if(win[color] !== 4){
+
+//     }
 //   }
 // }
 
-steps[paths["red"][5]].appendChild(document.getElementById("red1"));
-steps[paths["blue"][17]].appendChild(document.getElementById("blue1"));
+// steps[paths["red"][5]].appendChild(document.getElementById("red1"));
+// steps[paths["blue"][17]].appendChild(document.getElementById("blue1"));
 // steps[paths["red"][55]].appendChild(document.getElementById("red1"));
 // steps[paths["red"][55]].appendChild(document.getElementById("red2"));
 // steps[paths["red"][55]].appendChild(document.getElementById("red3"));
