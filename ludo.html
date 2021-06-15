@@ -31,10 +31,10 @@
     <audio controls id="killedSound" class="sound" hidden>
       <source src="./sounds/killed.mp3" type="audio/mpeg">
     </audio>
-    <audio controls id="stepSound" class="sound">
+    <audio controls id="stepSound" class="sound" hidden>
       <source src="./sounds/step.mp3" type="audio/mpeg">
     </audio>
-    <audio controls id="winSound" class="sound">
+    <audio controls id="winSound" class="sound" hidden>
       <source src="./sounds/win.mp3" type="audio/mpeg">
     </audio>
 
@@ -330,6 +330,15 @@
           </div>
         </div>
       </div>
+    </div>
+
+
+    <div class="score-board">
+      <h1>score board</h1>
+      <p id="score-red">red=0</p>
+      <p id="score-yellow">yellow=0</p>
+      <p id="score-green">green=0</p>
+      <p id="score-blue">blue=0</p>
     </div>
 
     <script src="./js/ludo.js"></script>

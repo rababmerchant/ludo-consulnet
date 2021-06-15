@@ -17,3 +17,23 @@ div{
 img:hover{
     cursor:pointer;
 }
+#tabs-1{
+    color:white;
+    font-size: 36px;
+    background-color: rgb(14, 71, 157);
+    border:2px solid blue;
+    overflow: scroll;
+    width:60%;
+    height: 60%;
+    position: absolute;
+    top:20%;
+    left:20%;
+    display:none;
+    margin: 0;
+
+}
+#tabs-1 div{
+    margin: 0;
+    display: flex;
+    justify-content:flex-end;
+}

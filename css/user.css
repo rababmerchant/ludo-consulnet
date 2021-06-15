@@ -3,7 +3,6 @@ html, body{
     height: 100%;
     overflow: hidden;
 	margin: 0px;
-    /* padding-bottom: 20px; */
     background-image: url("./../images/page.png");
     background-size:cover;
     background-repeat: no-repeat;
@@ -15,19 +14,9 @@ html, body{
     height: 82%;
 }
 .players img{
-    /* margin-top: 10px; */
-    margin-left: 250px;
+    margin-top: 50px;
+    margin-left: 300px;
 }
-/* .players img:nth-child(1){
-    position: relative;
-    right: 400px;
-    bottom: 280px;
-}
-.players img:nth-child(2){
-    position:relative;
-    right: 400px;
-    bottom: 250px; */
-/* } */
 img:hover{
     cursor: pointer;
 }
