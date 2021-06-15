@@ -13,6 +13,11 @@ let winGoti = false;
 // for (let i = 0; i < 72; i++) {
 //   steps[i].textContent = i;
 // }
+redscore=document.getElementById("score-red");
+yellowscore=document.getElementById("score-yellow");
+bluescore=document.getElementById("score-blue");
+greenscore=document.getElementById("score-green");
+
 
 const paths = {
   //yellow ka path
@@ -61,8 +66,8 @@ function changeDiceColor(color) {
 function rollDice() {
   if (canRoll) {
     document.getElementById("diceSound").play();
-    // randNum = Math.ceil(Math.random() * 6);
-    randNum = 1;
+    randNum = Math.ceil(Math.random() * 6);
+    // randNum = 6;
     let showClass = "show-" + randNum;
     if (currentClass) {
       dice.classList.remove(currentClass);
@@ -110,6 +115,7 @@ function decideNextTurn() {
 }
 
 function nextTurn() {
+<<<<<<< HEAD
   const ludoDice = document.getElementById("scene");
   switch (turn) {
     case "green":
@@ -143,9 +149,32 @@ function nextTurn() {
         ludoDice.style.bottom="0px"
         ludoDice.style.right="0px"
       }, 2000);
+=======
+  switch (turn) {
+    case "green":
+      changeDiceColor("#e8c80f");
+      turn = "yellow";
+      console.log("its yellow's turn");
+      break;
+    case "yellow":
+      changeDiceColor("#3f3fe0");
+      turn = "blue";
+      console.log("its blue's turn");
+      break;
+    case "blue":
+      changeDiceColor("#b73307");
+      turn = "red";
+      console.log("its red's turn");
+      break;
+    case "red":
+      changeDiceColor("#549c0d");
+      turn = "green";
+      console.log("its green's turn");
+>>>>>>> 44a9f3bcea5d55cbf29b3a22b1b02f763aa1afc2
       break;
   }
 }
+// dice.addEventListener("transitionend",nextTurn())
 
 function movePawn(color, num) {
   if (randNum == 0) {
@@ -195,6 +224,7 @@ function onKill(pos) {
         let victim = document.getElementById(color + "" + (i + 1));
         console.log(victim);
         victim.style.display = "hidden";
+
         document.getElementById("killedSound").play();
         let victimHome = document.getElementById(color + "Home" + (i + 1));
         victimHome.appendChild(victim);
@@ -220,6 +250,7 @@ let win = {
 
 function goti_win(position) {
   if (position == 56) {
+    redscore=500
     goti.style.display = "hidden";
     winPosition = document.getElementById(turn + "-triangle");
 
@@ -269,11 +300,11 @@ function decideWinPosition(color) {
 // function checkWinner() {
 //   for (const color in win) {
 //     if (win[color] === 4) {
-//       color
+//       winner.push(color);
 //     }
-//     else if(win[color] !== 4){
-
-//     }
+//   }
+//   if (winner.length === 3) {
+// yahan pr points chat lagana ha
 //   }
 // }
 

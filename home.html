@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home of ludo</title>
     <link href="./css/home.css" rel="stylesheet">
+    <link href="./js/ui/jquery-ui.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,10 +18,45 @@
         </map>
         <img usemap="#playbutton" src="./images/play.png" alt="play button" width="251px" height="100px">
     </div>
-    
+
     <div class="howtoplay">
-        <img src="./images/howtoplay.png" alt="how to play" width="251px" height="100px">
+            <img src="./images/howtoplay.png" alt="how to play" width="251px" height="100px">
     </div>
+
+    <div id="tabs-1">
+        <ol type="1">
+            <div class="close">
+            <img src="./images/close.png" alt="close">
+            </div>
+            <li>Roll a 6 to bring your first pawn onto the board. </li>
+            <li>Roll again to determine how many spaces to move your first pawn.</li>
+            <li>Place another pawn on the board if you roll another 6.</li>
+            <li>Continue to roll at the beginning of each turn and move your pawns.</li>
+            <li>Capture an opponent’s pawn by landing on the same space.</li>
+            <li>Move your pawns around the board going towards your home stretch.</li>
+            <li>Reach the home space with all of your pawns first to win the game.</li>
+        </ol>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/ui/jquery-ui.min.js"></script>
+    <script>
+
+        $(document).ready(function (){
+            $(".howtoplay").click(function(){
+                $( "#tabs-1" ).slideDown( "slow", function() {
+                    $( "#tabs-1" ).css( "display", "center" )
+                console.log("Animation complete");
+             });
+            });
+            $(".close").click(function(){
+                $( "#tabs-1" ).hide( "slow", function() {
+                console.log("Animation hide");
+             });
+            });
+        });
+     </script>
 
 
 </body>

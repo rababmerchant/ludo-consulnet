@@ -284,13 +284,51 @@ p {
 .cube-face6 {
   transform: rotateX(-90deg) translateZ(100px);
 }
+.score-board{
+  display: none;
+  width:200px;
+  height:200px;
+}
 
 @media (min-width:351px) and (max-width:700px){
   .ludo {
     width: 1081px;
   }
+  .circle{
+    width: 70px;
+    height: 70px;
+  }
+  .light-box {
+    width: 432px;
+    height: 432px;
+  }
+  .dark-box {
+    width: 250px;
+    height: 250px;
+  }
+  .shapes{
+    width: 200px;
+    height: 200px;
+  }
+  .white {
+    width: 72px;
+    height: 72px;
+  }
+  .box {
+    width: 72px;
+    height: 72px;
+  }
+  .side {
+    width: 216px;
+    height: 400px;
+  }
+  .middle {
+    width: 432px;
+    height: 216px;
+  }
+  .triangles {
+    width: 216px;
+    height: 216px;
+  }
 }
 
-.sound{
-  display: none;
-}
