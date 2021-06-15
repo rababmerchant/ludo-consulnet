@@ -290,3 +290,7 @@ p {
     width: 1081px;
   }
 }
+
+.sound{
+  display: none;
+}
