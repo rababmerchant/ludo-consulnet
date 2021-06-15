@@ -3,7 +3,10 @@ html, body{
     height: 100%;
     overflow: hidden;
 	margin: 0px;
+    /* padding-bottom: 20px; */
     background-image: url("./../images/page.png");
+    
+    padding: 10px 0px 5px 0px;
     background-size:cover;
     background-repeat: no-repeat;
 }
@@ -11,11 +14,11 @@ html, body{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 80%;
+    height: 82%;
 }
 .players img{
-    margin-top: 50px;
-    margin-left: 300px;
+    /* margin-top: 10px; */
+    margin-left: 250px;
 }
 /* .players img:nth-child(1){
     position: relative;

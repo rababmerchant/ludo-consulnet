@@ -60,9 +60,9 @@ function changeDiceColor(color) {
 // dice rolling aur turn checking
 function rollDice() {
   if (canRoll) {
-    document.getElementById("diceSound").play
-    randNum = Math.ceil(Math.random() * 6);
-    // randNum = 1;
+    document.getElementById("diceSound").play();
+    // randNum = Math.ceil(Math.random() * 6);
+    // randNum = 6;
     let showClass = "show-" + randNum;
     if (currentClass) {
       dice.classList.remove(currentClass);
@@ -109,26 +109,25 @@ function decideNextTurn() {
   shouldMovePawn = false;
 }
 
-
 function nextTurn() {
   switch (turn) {
     case "green":
-      changeDiceColor("yellow");
+      changeDiceColor("#e8c80f");
       turn = "yellow";
       console.log("its yellow's turn");
       break;
     case "yellow":
-      changeDiceColor("blue");
+      changeDiceColor("#3f3fe0");
       turn = "blue";
       console.log("its blue's turn");
       break;
     case "blue":
-      changeDiceColor("red");
+      changeDiceColor("#b73307");
       turn = "red";
       console.log("its red's turn");
       break;
     case "red":
-      changeDiceColor("green");
+      changeDiceColor("#549c0d");
       turn = "green";
       console.log("its green's turn");
       break;
@@ -143,6 +142,7 @@ function movePawn(color, num) {
   let currentPosition = currPosition[color][num - 1];
   if (turn === color) {
     if (randNum == 6 && currentPosition === -1) {
+      document.getElementById("inoutSound").play();
       goti.style.display = "hidden";
       steps[paths[color][0]].appendChild(goti);
       currentPosition = 0;
@@ -152,6 +152,7 @@ function movePawn(color, num) {
     } else if (currentPosition != -1 && currentPosition < 56) {
       currentPosition += randNum;
       if (currentPosition < 56) {
+        document.getElementById("stepSound").play();
         goti.style.display = "hidden";
         steps[paths[color][currentPosition]].appendChild(goti);
         shouldMovePawn = true;
@@ -181,6 +182,8 @@ function onKill(pos) {
         let victim = document.getElementById(color + "" + (i + 1));
         console.log(victim);
         victim.style.display = "hidden";
+
+        document.getElementById("killedSound").play();
         let victimHome = document.getElementById(color + "Home" + (i + 1));
         victimHome.appendChild(victim);
         currPosition[color][i] = -1;
@@ -207,6 +210,8 @@ function goti_win(position) {
   if (position == 56) {
     goti.style.display = "hidden";
     winPosition = document.getElementById(turn + "-triangle");
+
+    document.getElementById("winSound").play();
     winPosition.appendChild(goti);
     goti.style.position = "absolute";
     decideWinPosition(turn);
@@ -260,6 +265,8 @@ function decideWinPosition(color) {
 //   }
 // }
 
+// steps[paths["red"][5]].appendChild(document.getElementById("red1"));
+// steps[paths["blue"][17]].appendChild(document.getElementById("blue1"));
 // steps[paths["red"][55]].appendChild(document.getElementById("red1"));
 // steps[paths["red"][55]].appendChild(document.getElementById("red2"));
 // steps[paths["red"][55]].appendChild(document.getElementById("red3"));
