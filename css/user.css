@@ -5,8 +5,6 @@ html, body{
 	margin: 0px;
     /* padding-bottom: 20px; */
     background-image: url("./../images/page.png");
-    
-    padding: 10px 0px 5px 0px;
     background-size:cover;
     background-repeat: no-repeat;
 }
