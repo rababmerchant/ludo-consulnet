@@ -13,11 +13,10 @@ let winGoti = false;
 // for (let i = 0; i < 72; i++) {
 //   steps[i].textContent = i;
 // }
-redscore=document.getElementById("score-red");
-yellowscore=document.getElementById("score-yellow");
-bluescore=document.getElementById("score-blue");
-greenscore=document.getElementById("score-green");
-
+redscore = document.getElementById("score-red");
+yellowscore = document.getElementById("score-yellow");
+bluescore = document.getElementById("score-blue");
+greenscore = document.getElementById("score-green");
 
 const paths = {
   //yellow ka path
@@ -50,7 +49,7 @@ const paths = {
 };
 
 const currPosition = {
-  red: [-1, -1, -1, -1],
+  red: [55, 55, 55, 55],
   blue: [-1, -1, -1, -1],
   yellow: [-1, -1, -1, -1],
   green: [-1, -1, -1, -1],
@@ -66,8 +65,8 @@ function changeDiceColor(color) {
 function rollDice() {
   if (canRoll) {
     document.getElementById("diceSound").play();
-    randNum = Math.ceil(Math.random() * 6);
-    // randNum = 6;
+    // randNum = Math.ceil(Math.random() * 6);
+    randNum = 1;
     let showClass = "show-" + randNum;
     if (currentClass) {
       dice.classList.remove(currentClass);
@@ -104,9 +103,9 @@ function decideNextTurn() {
     canRoll = true;
     randNum = 0;
   } else if (winGoti) {
-    if (win[turn] === 4) {
-      // yahan pr winner declare krna ha
-    }
+    // if (win[turn] === 4) {
+    //   // yahan pr winner declare krna ha
+    // }
     winGoti = false;
     canRoll = true;
     randNum = 0;
@@ -115,62 +114,39 @@ function decideNextTurn() {
 }
 
 function nextTurn() {
-<<<<<<< HEAD
   const ludoDice = document.getElementById("scene");
   switch (turn) {
     case "green":
       setTimeout(function () {
         changeDiceColor("#e8c80f");
         turn = "yellow";
-        ludoDice.style.bottom="0px"
-        ludoDice.style.left="0px"
+        ludoDice.style.bottom = "0px";
+        ludoDice.style.left = "0px";
       }, 2000);
       break;
     case "yellow":
       setTimeout(function () {
         turn = "blue";
         changeDiceColor("#3f3fe0");
-        ludoDice.style.top="0px"
-        ludoDice.style.left="0px"
+        ludoDice.style.top = "0px";
+        ludoDice.style.left = "0px";
       }, 2000);
       break;
     case "blue":
       setTimeout(function () {
         changeDiceColor("#b73307");
         turn = "red";
-        ludoDice.style.top="0px"
-        ludoDice.style.right="0px"
+        ludoDice.style.top = "0px";
+        ludoDice.style.right = "0px";
       }, 2000);
       break;
     case "red":
       setTimeout(function () {
         changeDiceColor("#549c0d");
         turn = "green";
-        ludoDice.style.bottom="0px"
-        ludoDice.style.right="0px"
+        ludoDice.style.bottom = "0px";
+        ludoDice.style.right = "0px";
       }, 2000);
-=======
-  switch (turn) {
-    case "green":
-      changeDiceColor("#e8c80f");
-      turn = "yellow";
-      console.log("its yellow's turn");
-      break;
-    case "yellow":
-      changeDiceColor("#3f3fe0");
-      turn = "blue";
-      console.log("its blue's turn");
-      break;
-    case "blue":
-      changeDiceColor("#b73307");
-      turn = "red";
-      console.log("its red's turn");
-      break;
-    case "red":
-      changeDiceColor("#549c0d");
-      turn = "green";
-      console.log("its green's turn");
->>>>>>> 44a9f3bcea5d55cbf29b3a22b1b02f763aa1afc2
       break;
   }
 }
@@ -250,7 +226,7 @@ let win = {
 
 function goti_win(position) {
   if (position == 56) {
-    redscore=500
+    redscore = 500;
     goti.style.display = "hidden";
     winPosition = document.getElementById(turn + "-triangle");
 
@@ -263,7 +239,7 @@ function goti_win(position) {
     console.log(win[turn]);
     shouldMovePawn = false;
     winGoti = true;
-    // checkWinner();
+    gameOver();
   }
 }
 
@@ -293,6 +269,15 @@ function decideWinPosition(color) {
   }
 }
 
+function gameOver() {
+  const scoreBoard =$("#score-board");
+  if (win[turn] === 4) {
+    $("#score-board").slideDown("slow", function () {
+      console.log("scoring complete");
+    });
+  }
+}
+
 // winner ki logic yeh ha k agr kisi ki 4ron
 // gotiyaan win kr jai tw uske home pr 1st likha aa jai
 // aur baqi agr less than 2 players ho tw
@@ -310,10 +295,10 @@ function decideWinPosition(color) {
 
 // steps[paths["red"][5]].appendChild(document.getElementById("red1"));
 // steps[paths["blue"][17]].appendChild(document.getElementById("blue1"));
-// steps[paths["red"][55]].appendChild(document.getElementById("red1"));
-// steps[paths["red"][55]].appendChild(document.getElementById("red2"));
-// steps[paths["red"][55]].appendChild(document.getElementById("red3"));
-// steps[paths["red"][55]].appendChild(document.getElementById("red4"));
+steps[paths["red"][55]].appendChild(document.getElementById("red1"));
+steps[paths["red"][55]].appendChild(document.getElementById("red2"));
+steps[paths["red"][55]].appendChild(document.getElementById("red3"));
+steps[paths["red"][55]].appendChild(document.getElementById("red4"));
 
 // steps[paths["blue"][55]].appendChild(document.getElementById("blue1"));
 // steps[paths["blue"][55]].appendChild(document.getElementById("blue2"));
