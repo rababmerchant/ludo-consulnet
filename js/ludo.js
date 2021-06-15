@@ -61,7 +61,7 @@ function changeDiceColor(color) {
 function rollDice() {
   if (canRoll) {
     document.getElementById("diceSound").play();
-    // randNum = Math.ceil(Math.random() * 6);
+    randNum = Math.ceil(Math.random() * 6);
     // randNum = 6;
     let showClass = "show-" + randNum;
     if (currentClass) {
