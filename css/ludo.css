@@ -340,7 +340,7 @@ p {
   text-align: center;
   border: 3px solid rgb(12, 12, 14) ;
   position: absolute;
-  top:68%;
+  top:50%;
   left:30%;
   display: none;
 }

@@ -13,10 +13,7 @@ let winGoti = false;
 // for (let i = 0; i < 72; i++) {
 //   steps[i].textContent = i;
 // }
-redscore = document.getElementById("score-red");
-yellowscore = document.getElementById("score-yellow");
-bluescore = document.getElementById("score-blue");
-greenscore = document.getElementById("score-green");
+
 
 const paths = {
   //yellow ka path
@@ -317,10 +314,10 @@ function gameOver() {
 // steps[paths["red"][55]].appendChild(document.getElementById("red3"));
 // steps[paths["red"][55]].appendChild(document.getElementById("red4"));
 
-// steps[paths["blue"][55]].appendChild(document.getElementById("blue1"));
-// steps[paths["blue"][55]].appendChild(document.getElementById("blue2"));
-// steps[paths["blue"][55]].appendChild(document.getElementById("blue3"));
-// steps[paths["blue"][55]].appendChild(document.getElementById("blue4"));
+// steps[paths["blue"][54]].appendChild(document.getElementById("blue1"));
+// steps[paths["blue"][54]].appendChild(document.getElementById("blue2"));
+// steps[paths["blue"][54]].appendChild(document.getElementById("blue3"));
+// steps[paths["blue"][54]].appendChild(document.getElementById("blue4"));
 
 // steps[paths["green"][55]].appendChild(document.getElementById("green1"));
 // steps[paths["green"][55]].appendChild(document.getElementById("green2"));
