@@ -14,8 +14,8 @@ html, body{
     height: 82%;
 }
 .players img{
-    margin-top: 50px;
-    margin-left: 300px;
+    margin-top: 1%;
+    margin-left:15%; 
 }
 img:hover{
     cursor: pointer;

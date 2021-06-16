@@ -49,7 +49,8 @@ const paths = {
 };
 
 const currPosition = {
-  red: [55, 55, 55, 55],
+  // red: [55, 55, 55, 55],
+  red: [-1, -1, -1, -1],
   blue: [-1, -1, -1, -1],
   yellow: [-1, -1, -1, -1],
   green: [-1, -1, -1, -1],
@@ -65,8 +66,8 @@ function changeDiceColor(color) {
 function rollDice() {
   if (canRoll) {
     document.getElementById("diceSound").play();
-    // randNum = Math.ceil(Math.random() * 6);
-    randNum = 1;
+    randNum = Math.ceil(Math.random() * 6);
+    // randNum = 1;
     let showClass = "show-" + randNum;
     if (currentClass) {
       dice.classList.remove(currentClass);
@@ -103,9 +104,6 @@ function decideNextTurn() {
     canRoll = true;
     randNum = 0;
   } else if (winGoti) {
-    // if (win[turn] === 4) {
-    //   // yahan pr winner declare krna ha
-    // }
     winGoti = false;
     canRoll = true;
     randNum = 0;
@@ -115,42 +113,62 @@ function decideNextTurn() {
 
 function nextTurn() {
   const ludoDice = document.getElementById("scene");
-  switch (turn) {
-    case "green":
-      setTimeout(function () {
-        changeDiceColor("#e8c80f");
-        turn = "yellow";
-        ludoDice.style.bottom = "0px";
-        ludoDice.style.left = "0px";
-      }, 2000);
-      break;
-    case "yellow":
-      setTimeout(function () {
-        turn = "blue";
-        changeDiceColor("#3f3fe0");
-        ludoDice.style.top = "0px";
-        ludoDice.style.left = "0px";
-      }, 2000);
-      break;
-    case "blue":
-      setTimeout(function () {
-        changeDiceColor("#b73307");
-        turn = "red";
-        ludoDice.style.top = "0px";
-        ludoDice.style.right = "0px";
-      }, 2000);
-      break;
-    case "red":
-      setTimeout(function () {
-        changeDiceColor("#549c0d");
-        turn = "green";
-        ludoDice.style.bottom = "0px";
-        ludoDice.style.right = "0px";
-      }, 2000);
-      break;
+  if (document.location.href === "file:///C:/Users/DELL/OneDrive/Documents/GitHub/ludo-consulnet/ludo.html?player=2") {
+    switch (turn) {
+      case "green":
+        setTimeout(function () {
+          changeDiceColor("#3f3fe0");
+          turn = "blue";
+          ludoDice.style.top = "0px";
+          ludoDice.style.left = "0px";
+        }, 2000);
+        break;
+      case "blue":
+        setTimeout(function () {
+          turn = "green";
+          changeDiceColor("#549c0d");
+          ludoDice.style.bottom = "0px";
+          ludoDice.style.right = "0px";
+        }, 2000);
+        break;
+    }
+  } else if (document.location.href === "file:///C:/Users/DELL/OneDrive/Documents/GitHub/ludo-consulnet/ludo.html?player=4") {
+    switch (turn) {
+      case "green":
+        setTimeout(function () {
+          changeDiceColor("#e8c80f");
+          turn = "yellow";
+          ludoDice.style.bottom = "0px";
+          ludoDice.style.left = "0px";
+        }, 2000);
+        break;
+      case "yellow":
+        setTimeout(function () {
+          turn = "blue";
+          changeDiceColor("#3f3fe0");
+          ludoDice.style.top = "0px";
+          ludoDice.style.left = "0px";
+        }, 2000);
+        break;
+      case "blue":
+        setTimeout(function () {
+          changeDiceColor("#b73307");
+          turn = "red";
+          ludoDice.style.top = "0px";
+          ludoDice.style.right = "0px";
+        }, 2000);
+        break;
+      case "red":
+        setTimeout(function () {
+          changeDiceColor("#549c0d");
+          turn = "green";
+          ludoDice.style.bottom = "0px";
+          ludoDice.style.right = "0px";
+        }, 2000);
+        break;
+    }
   }
 }
-// dice.addEventListener("transitionend",nextTurn())
 
 function movePawn(color, num) {
   if (randNum == 0) {
@@ -270,10 +288,9 @@ function decideWinPosition(color) {
 }
 
 function gameOver() {
-  const scoreBoard =$("#score-board");
   if (win[turn] === 4) {
     $("#score-board").slideDown("slow", function () {
-      console.log("scoring complete");
+      $("#score-board p").text(turn);
     });
   }
 }
@@ -295,10 +312,10 @@ function gameOver() {
 
 // steps[paths["red"][5]].appendChild(document.getElementById("red1"));
 // steps[paths["blue"][17]].appendChild(document.getElementById("blue1"));
-steps[paths["red"][55]].appendChild(document.getElementById("red1"));
-steps[paths["red"][55]].appendChild(document.getElementById("red2"));
-steps[paths["red"][55]].appendChild(document.getElementById("red3"));
-steps[paths["red"][55]].appendChild(document.getElementById("red4"));
+// steps[paths["red"][55]].appendChild(document.getElementById("red1"));
+// steps[paths["red"][55]].appendChild(document.getElementById("red2"));
+// steps[paths["red"][55]].appendChild(document.getElementById("red3"));
+// steps[paths["red"][55]].appendChild(document.getElementById("red4"));
 
 // steps[paths["blue"][55]].appendChild(document.getElementById("blue1"));
 // steps[paths["blue"][55]].appendChild(document.getElementById("blue2"));
