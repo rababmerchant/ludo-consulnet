@@ -339,9 +339,9 @@ p {
   margin: auto;
   text-align: center;
   border: 3px solid rgb(12, 12, 14) ;
-  /* display: none; */
+  display: none;
   position: absolute;
-  top:68%;
+  top:50%;
   left:30%;
 }
 #score-board h1{
