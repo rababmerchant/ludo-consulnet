@@ -110,7 +110,7 @@ function decideNextTurn() {
 
 function nextTurn() {
   const ludoDice = document.getElementById("scene");
-  if (document.location.href === "file:///C:/Users/DELL/OneDrive/Documents/GitHub/ludo-consulnet/ludo.html?player=2") {
+  if (document.location.href === "file:///Users/muhammadraza/Documents/GitHub/ludo-consulnet/ludo.html?player=2") {
     switch (turn) {
       case "green":
         setTimeout(function () {
@@ -129,7 +129,7 @@ function nextTurn() {
         }, 2000);
         break;
     }
-  } else if (document.location.href === "file:///C:/Users/DELL/OneDrive/Documents/GitHub/ludo-consulnet/ludo.html?player=4") {
+  } else if (document.location.href === "file:///Users/muhammadraza/Documents/GitHub/ludo-consulnet/ludo.html?player=4") {
     switch (turn) {
       case "green":
         setTimeout(function () {
